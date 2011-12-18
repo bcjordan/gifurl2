@@ -9,7 +9,7 @@ group :assets do
 end
 gem 'jquery-rails'
 if HOST_OS =~ /linux/i
-  gem 'therubyracer', '>= 0.9.8'
+  gem 'therubyracer', '>= 0.9.8', :require => false
 end
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
@@ -26,8 +26,8 @@ case HOST_OS
     gem 'rb-fsevent', :group => :development, :require => false
     gem 'growl', :group => :development, :require => false
   when /linux/i
-    gem 'libnotify', :group => :development
-    gem 'rb-inotify', :group => :development
+    gem 'libnotify', :group => :development, :require => false
+    gem 'rb-inotify', :group => :development, :require => false
   when /mswin|windows/i
     gem 'rb-fchange', :group => :development
     gem 'win32console', :group => :development
