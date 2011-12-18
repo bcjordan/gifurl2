@@ -8,7 +8,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
-gem 'therubyracer', '>= 0.9.8', :group => :production
+# gem 'therubyracer', '>= 0.9.8', :group => :production
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
