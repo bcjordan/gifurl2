@@ -9,7 +9,7 @@ group :assets do
 end
 gem 'jquery-rails'
 if HOST_OS =~ /linux/i
-  gem 'therubyracer', '>= 0.9.8', :require => false
+  gem 'therubyracer', '>= 0.9.8', :group => :production
 end
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
