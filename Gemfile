@@ -26,8 +26,8 @@ case HOST_OS
     gem 'rb-fsevent', :group => :development, :require => false
     gem 'growl', :group => :development, :require => false
   when /linux/i
-    gem 'libnotify', :group => :development, :require => false
-    gem 'rb-inotify', :group => :development, :require => false
+    # gem 'libnotify', :group => :development, :require => false
+    # gem 'rb-inotify', :group => :development, :require => false
   when /mswin|windows/i
     gem 'rb-fchange', :group => :development
     gem 'win32console', :group => :development
