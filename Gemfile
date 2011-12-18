@@ -21,13 +21,9 @@ gem "cucumber-rails", ">= 1.2.0", :group => :test
 gem "capybara", ">= 1.1.2", :group => :test
 gem "launchy", ">= 2.0.5", :group => :test
 gem "guard", ">= 0.6.2", :group => :development
+gem 'rb-fsevent', :group => :development, :require => false
+gem 'growl', :group => :development, :require => false
 case HOST_OS
-  when /darwin/i
-    gem 'rb-fsevent', :group => :development, :require => false
-    gem 'growl', :group => :development, :require => false
-  when /linux/i
-    # gem 'libnotify', :group => :development, :require => false
-    # gem 'rb-inotify', :group => :development, :require => false
   when /mswin|windows/i
     gem 'rb-fchange', :group => :development
     gem 'win32console', :group => :development
