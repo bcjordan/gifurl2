@@ -64,4 +64,9 @@ tmp/*
 **.swp
 
 # keep OmniAuth service provider secrets out of the Git repo
-config/initializers/omniauth.rb
+# config/initializers/omniauth.rb
+# OmniAuth creds stored in ENV['provider_key'] and secret
+
+
+# secrets
+CREDENTIALS
