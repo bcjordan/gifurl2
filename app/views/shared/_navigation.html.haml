@@ -1,8 +1,9 @@
 - if user_signed_in?
-  %li
-    Logged in as #{current_user.name}
-  %li
-    = link_to('Logout', signout_path)
+  %span.status Logged in as #{current_user.name}
+  %a.btn{:href => signout_path} Logout
 - else
-  %li
-    = link_to('Login', signin_path)
+  %input.input-small{:type=>"text", :placeholder => "Username"}
+  %input.input-small{:type=>"password", :placeholder=>"Password"}
+  %a#or or 
+  %a.btn.primary{:href => signin_path}
+    Facebook Login

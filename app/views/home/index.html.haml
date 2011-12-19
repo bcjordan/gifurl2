@@ -1,3 +1,36 @@
-%h3 Home
-- @users.each do |user|
-  %p User: #{link_to user.name, user}
+.span10
+  .row
+    .span6
+      %h1 Instant <em>gif</em>ratification:
+      %ul.tabs
+        %li.span6
+          Tag
+          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/popcorn.1.gif')"} http://gifurl.com/popcorn.gif
+        %li.span6
+          Tags
+          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/thats+racist.2.gif')"} http://gifurl.com/thats+racist.gif
+        %li.span6
+          Listing
+          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/popcorn.7.gif')"} http://gifurl.com/popcorn.7.gif
+        %li.span6
+          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/popcorn.8.gif')"} http://gifurl.com/popcorn.8.gif
+    .span4.samplegif
+      %img{:src => 'http://gifurl.com/popcorn.gif',
+           :style => 'float:right;margin-right:15px'}
+    
+
+.span4
+  %h2
+    %img{:class => 'stache', :src => "#{asset_path 'moustache.png'}"}
+    Stashes
+  %ul
+    - @users.each do |user|
+      %li.bro
+        #{link_to user.name, user}
+        %span.label.success 532 gifs
+    %li.bro
+      %a{:href=>'/'} Andrew Ber
+      %span.label.notice newb
+    %li.bro
+      %a{:href=>'/'} bobberson
+      %span.label.success 5 origs

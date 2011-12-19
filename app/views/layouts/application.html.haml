@@ -1,21 +1,57 @@
 !!!
 %html
   %head
-    %title Newgifurl
+    %title GifURL
     %meta{:charset => "utf-8"}
     %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %meta{:name => "description", :content => "Quick animated GIF collection tool"}
+    %meta{:name => "author", :content => "Brian Jordan"}
+
+    - unless flash.empty?
+      <script> setTimeout(function() { $(".alert-message").hide("blind").empty(); }, 1000); </script>
+
     = stylesheet_link_tag :application
     = javascript_include_tag :application
     = csrf_meta_tags
   %body{:class => params[:controller]}
-    #container.container
-      %header
-        %nav
-          %ul.hmenu
-            = render 'shared/navigation'
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_\#{name}" if msg.is_a?(String)
-      #main{:role => "main"}
-        = yield
+    .topbar
+      .fill
+        .container
+          %a.brand{:href => '/'}
+            GifURL
+            \-- Your Private Trolling Stash
+          -# %ul.nav %li %a.popovers{:href => '/'}This %li 
+          .pull-right.login= render 'shared/navigation'
+    .container
+      .content
+        .page-header
+          #gifstrip
+            %a.popovers{:href => "http://i.eho.st/pgzlex7r.gif", 'html'=>"true", 'title'=>'Uploaded by <em>Brian Jordan</em>', "data-placement"=>'below', 'data-content'=>'<img src="http://i.eho.st/pgzlex7r.gif"/>'}
+              %img{:alt => "Conan string dance", :src => "http://i.eho.st/pgzlex7r.gif", :title => "Conan string dance"}
+            %a.popovers{:href => "http://i.imgur.com/BhhMx.gif", 'title'=>"And here's another some amazing content. It's very engaging. right?", "data-placement"=>'below'}
+              %img{:src => "http://i.imgur.com/BhhMx.gif"}
+            %a.popovers{:href => "http://i.imgur.com/nAPxa.gif", 'title'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:alt => "Tyson vs Ipad", :src => "http://i.imgur.com/nAPxa.gif", :title => "Tyson vs Ipad"}
+            %a.popovers{:href => "http://i.imgur.com/VgJEu.gif", 'title'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:alt => "Conan eats popcorn during monologue", :src => "http://i.imgur.com/VgJEu.gif", :title => "Conan eats popcorn during monologue"}
+            %a.popovers{:href => "http://i.imgur.com/JJHid.gif", 'title'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:src => "http://i.imgur.com/JJHid.gif"}
+            %a.popovers{:href => "http://i.eho.st/pg2txmn2.gif", 'title'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:alt => "Slinky falling", :src => "http://i.eho.st/pg2txmn2.gif", :title => "Slinky falling"}
+            %a.popovers{:href => "http://i.imgur.com/ubGS7.gif", 'title'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:alt => "Daffy Duck is bored", :src => "http://i.imgur.com/ubGS7.gif", :title => "Daffy Duck is bored"}
+            %a.popovers{:href => "http://i.eho.st/pgas5x6i.gif", 'title'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:alt => "Conan is Conan", :src => "http://i.eho.st/pgas5x6i.gif", :title => "Conan is Conan"}
+            %a.popovers{:href => "http://i.imgur.com/szzFu.gif", 'title'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:alt => "Star Trek reaction", :src => "http://i.imgur.com/szzFu.gif", :title => "Star Trek reaction"}
+            %a.popovers{:href => "http://i.imgur.com/7xmfD.gif", :rel=>"popover", :title=>"A title", 'data-content'=>"Uploaded by bobberson", "data-placement"=>'below'}
+              %img{:alt => "Multiple choice. Do you masturbate? Always.", :src => "http://i.imgur.com/7xmfD.gif", :title => "Multiple choice. Do you masturbate? Always."}
+
+        .span14
+          - flash.each do |name, msg|
+            - if msg.is_a?(String)
+              %h2.alert-message.success{:id => "flash_#{name}"}= msg
+        .row{:role => "main"}
+          = yield
       %footer
