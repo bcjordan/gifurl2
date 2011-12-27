@@ -9,3 +9,13 @@ To find a gif, you can:
     http://gifurl.com/popcorn.gif
 
 Finds the most popular popcorn gif and forwards directly to it. It's even embeddable!
+
+
+# TODO:
+
+* Add GIF model using mongoid
+** Should have:
+
+list of URLs
+
+

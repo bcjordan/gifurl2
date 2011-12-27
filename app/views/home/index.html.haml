@@ -1,36 +1,66 @@
-.span10
-  .row
-    .span6
-      %h1 Instant <em>gif</em>ratification:
-      %ul.tabs
-        %li.span6
-          Tag
-          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/popcorn.1.gif')"} http://gifurl.com/popcorn.gif
-        %li.span6
-          Tags
-          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/thats+racist.2.gif')"} http://gifurl.com/thats+racist.gif
-        %li.span6
-          Listing
-          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/popcorn.7.gif')"} http://gifurl.com/popcorn.7.gif
-        %li.span6
-          %a{:onmouseover => "$('.samplegif img').attr('src', 'http://gifurl.com/popcorn.8.gif')"} http://gifurl.com/popcorn.8.gif
-    .span4.samplegif
-      %img{:src => 'http://gifurl.com/popcorn.gif',
-           :style => 'float:right;margin-right:15px'}
-    
+.row
+  .span2 &nbsp;
+  .span8
+    %center
+      %h1
+        %form
+          %input.searchbox{:type => 'text', :value => "find your gif", :placeholder => ""}
+      %h1 ... or ...
+      %h1.instruction-top learn to URL Search
+    %ul.tabs
+      %li.span6
+        .instruction get a "popcorn" gif
+        %a.popovers{:html => 'true', :title => "Conan mashes popcorn", "data-content" => "<img id='popgif' src='http://gifurl.com/popcorn.gif'/>", 'width' => '10', :onmouseover => "$('.samplegif img').attr('src',
+          'http://gifurl.com/popcorn.1.gif')"}
+          http://gifurl.com/popcorn.gif
+      %li.span6
+        .instruction get a gif about a dog and bacon
+        %a.popovers{:html => 'true', :title => "Dog likes Bacon", "data-content" => "<img id='popgif' src='http://gifurl.com/dog+bacon.gif'/>", :onmouseover => "$('.samplegif img').attr('src',
+          'http://gifurl.com/dog+bacon.gif')"}
+          http://gifurl.com/dog+bacon.gif
+      %li.span6
+        .instruction browse Listing Page
+        %a{:onmouseover => "$('.samplegif img').attr('src',
+          'http://gifurl.com/creepy.gif')"}
+          http://gifurl.com/creepy
+      %li.span6
+        %a{:onmouseover => "$('.samplegif img').attr('src',
+          'http://gifurl.com/hug.gif')"}
+          http://gifurl.com/hugs
+      %li.span6
+        .instruction add (and rehost) a GIF by URL
+        %a{:onmouseover => "$('.samplegif img').attr('src',
+          'http://gifurl.com/http://i.imgur.com/iBm64.gif')"}
+          http://gifurl.com/http://a.com/b.gif
+      %li.span6
+        .instruction access your Stash
+        %a{:onmouseover => "$('.samplegif img').attr('src',
+          'http://gifurl.com/hug.gif')"}
+          http://yourname.gifurl.com/
 
-.span4
-  %h2
-    %img{:class => 'stache', :src => "#{asset_path 'moustache.png'}"}
-    Stashes
-  %ul
-    - @users.each do |user|
-      %li.bro
-        #{link_to user.name, user}
-        %span.label.success 532 gifs
-    %li.bro
-      %a{:href=>'/'} Andrew Ber
-      %span.label.notice newb
-    %li.bro
-      %a{:href=>'/'} bobberson
-      %span.label.success 5 origs
+  .span4.sidebar
+    %h2 newest gifs
+    %ul.biglist
+      %li bacon dancer
+      %li happy cat
+      %li cute dog
+    %h2 top all-time
+    %ul.biglist
+      %li That's Racist
+      %li Michael Jackson eating Popcorn
+      %li some gif
+    %h2
+      top
+      %img{:class => 'stache', :src => "#{asset_path 'moustache.png'}"}
+      stashes
+    %ul.biglist
+      - @users.each do |user|
+        %li
+          #{link_to user.name, user}
+          %span.label.success 532 gifs
+      %li
+        %a{:href=>'/'} Andrew Ber
+        %span.label.notice newb
+      %li
+        %a{:href=>'/'} bobberson
+        %span.label.success 5 origs
