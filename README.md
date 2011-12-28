@@ -1,5 +1,5 @@
 # GifURL
-## The world's fastest .gif finding service
+## The instant .gif finding service
 
 To find a gif, you can:
 
@@ -10,12 +10,5 @@ To find a gif, you can:
 
 Finds the most popular popcorn gif and forwards directly to it. It's even embeddable!
 
-
-# TODO:
-
-* Add GIF model using mongoid
-** Should have:
-
-list of URLs
-
-
+## Eng. scratch pad:
+* http://stackoverflow.com/questions/8349530/upload-an-rmagick-generated-file-from-heroku-to-amazon-s3

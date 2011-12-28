@@ -41,9 +41,13 @@
   .span4.sidebar
     %h2 newest gifs
     %ul.biglist
-      %li bacon dancer
-      %li happy cat
-      %li cute dog
+      - @newfive.each do |gif|
+        %li
+          %a.popovers{href: gif.url, html: 'true',
+             title: 'Uploaded by <em>Brian Jordan</em>',
+             'data-content' => "<img src='#{gif.url}'/>",
+             'data-placement' => 'left'}
+            = gif.title
     %h2 top all-time
     %ul.biglist
       %li That's Racist

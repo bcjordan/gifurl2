@@ -6,6 +6,12 @@ class User
   field :email, :type => String
   attr_accessible :provider, :uid, :name, :email
 
+  has_and_belongs_to_many :gifs
+
+  def stash gif
+    gifs << gif
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
