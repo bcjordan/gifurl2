@@ -1,5 +1,5 @@
 $(function () { $('a.popovers') .popover({ offset: 10, html: true })})
-//, delayOut: 3000 => wait 3 seconds to hide again
+// popover can use option delayOut: 3000 => wait 3 seconds to hide again
 
 
 $(function() {
