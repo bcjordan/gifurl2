@@ -19,4 +19,6 @@ b = Gif.create!(title: "Conan String Dance", url: "http://i.eho.st/pgzlex7r.gif"
   sleep(0.1)
   Gif.create!(title: "Gif #{n}", url: "http://i.eho.st/pgzlex7r.gif?#{n}")
        .tag("#{n}")
+       .tag("jackson").tag("popcorn")
+       .tag('a b c d e f g')
 end

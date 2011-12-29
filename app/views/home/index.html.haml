@@ -44,7 +44,7 @@
       - @newfive.each do |gif|
         %li
           %a.popovers{href: gif.url, html: 'true',
-             title: 'Uploaded by <em>Brian Jordan</em>',
+             title: "<div class='tagtitle'>#{gif.title}: </div>#{gif.tag_ids.inject(''){|s, tag| s+= '<div class="label labeltag success">'; s+= tag; s+= '</div>'}}",
              'data-content' => "<img src='#{gif.url}'/>",
              'data-placement' => 'left'}
             = gif.title
