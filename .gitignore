@@ -76,3 +76,5 @@ CREDENTIALS
 # RubyMine/intellij
 /.idea/*
 
+# Carrierwave
+/uploads/

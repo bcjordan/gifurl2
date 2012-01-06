@@ -1,5 +1,7 @@
+- show_mini = false
+
 .row
-  .span2 &nbsp;
+  .span1 &nbsp;
   .span8
     %center
       %h1
@@ -38,15 +40,17 @@
           'http://gifurl.com/hug.gif')"}
           http://yourname.gifurl.com/
 
-  .span4.sidebar
+  .span5.sidebar
     %h2 newest gifs
     %ul.biglist
       - @newfive.each do |gif|
         %li
-          %a.popovers{href: gif.url, html: 'true',
+          %a.popovers{href: gif.gif.url, html: 'true',
              title: "<div class='tagtitle'>#{gif.title}: </div>#{gif.tag_ids.inject(''){|s, tag| s+= '<div class="label labeltag success">'; s+= tag; s+= '</div>'}}",
-             'data-content' => "<img src='#{gif.url}'/>",
+             'data-content' => "<img src='#{gif.gif.box}'/>",
              'data-placement' => 'left'}
+            - if show_mini
+              <img src="http://i.gifurl.com/H1EXl.gif_s.gif" width=25 height=25/>
             = gif.title
     %h2 top all-time
     %ul.biglist

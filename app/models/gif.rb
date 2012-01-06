@@ -1,20 +1,40 @@
 class Gif
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Versioning
 
   has_and_belongs_to_many :tags, index: true
   has_and_belongs_to_many :users
 
+  before_validation :update_gif_attributes
+
+  validates_uniqueness_of :checksum
+
   # TODO: cache multi-tagging count in Gif model (for popularity/confidence)
   # field :taggings, type: Hash, default: {} # {tagname: count, tagname: count}
 
+  # TODO: cache uploaded file size, dimensions, content type
+  # https://github.com/jnicklas/carrierwave/wiki/How-to%3A-Store-the-uploaded-file-size-and-content-type
+
+  # TODO: use multiple cloudfront cnames for thumbnails and other on-page-load assets
+  # https://github.com/jnicklas/carrierwave/issues/371#issuecomment-2854316
+  
   field :views, default: 0
   field :upvotes, default: 0
   field :downvotes, default: 0
   field :url
   field :title
   field :score, default: 0
+  field :checksum
+  field :md5
+  field :content_type
+  field :file_size
+
+  field :gif
+  mount_uploader :gif, GifUploader
+
+  field :url_hash, default: -> { Gif.free_hash }
+  validates_presence_of :url_hash
+  index :url_hash
 
   embeds_many :urls
 
@@ -46,4 +66,24 @@ class Gif
   def view()     inc(:views,     1); inc(:score, 1); self end
   def upvote()   inc(:upvotes,   1); inc(:score, 1); self end
   def downvote() inc(:downvotes, 1); inc(:score, -1); self end
+
+  def self.free_hash
+    img_hash = '-'
+    while(img_hash.match(/-|_/) || Gif.exists?(conditions: {url_hash: img_hash}))
+      img_hash = SecureRandom.urlsafe_base64(4).chop
+    end
+    img_hash
+  end
+
+  private
+  
+  def update_gif_attributes
+    if gif.present? && !self.checksum
+      self.content_type = gif.file.content_type
+      self.file_size = gif.file.size
+      self.md5 = gif.md5
+      self.checksum = gif.checksum
+    end
+  end
+
 end

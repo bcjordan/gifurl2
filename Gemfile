@@ -38,3 +38,9 @@ gem "omniauth", ">= 1.0.0"
 gem "omniauth-facebook"
 gem "twitter-bootstrap-rails"
 gem "rails-footnotes", ">= 3.7", :group => :development
+gem "delayed_job"
+gem "delayed_job_mongoid"
+gem "rmagick"
+gem "carrierwave"
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem "fog"

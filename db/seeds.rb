@@ -8,17 +8,21 @@
 puts 'EMPTY THE MONGODB DATABASE'
 Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
 
-a = Gif.create!(title: "Michael Jackson eating popcorn", url: "http://i.imgur.com/tCp90.gif")
+a = Gif.create(title: "Michael Jackson eating popcorn", remote_gif_url: "http://i.imgur.com/tCp90.gif")
        .tag("jackson").tag("popcorn")
        .tag('a b c d e f g')
 
-b = Gif.create!(title: "Conan String Dance", url: "http://i.eho.st/pgzlex7r.gif")
+b = Gif.create(title: "Conan String Dance", remote_gif_url: "http://i.eho.st/pgzlex7r.gif")
        .tag("conan string dance")
 
-5.times do |n|
+2.times do |n|
   sleep(0.1)
-  Gif.create!(title: "Gif #{n}", url: "http://i.eho.st/pgzlex7r.gif?#{n}")
+  Gif.create(title: "Gif #{n}", remote_gif_url: "http://i.eho.st/pgzlex7r.gif?#{n}")
        .tag("#{n}")
        .tag("jackson").tag("popcorn")
        .tag('a b c d e f g')
 end
+
+d = Gif.create
+d.remote_gif_url = "http://i.imgur.com/nAPxa.gif"
+d.save!

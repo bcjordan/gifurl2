@@ -3,9 +3,9 @@ class HomeController < ApplicationController
     @users = User.all
 
     @newfive = Gif.where(:title.exists => true)
-                  .where(:url.exists => true)
+                  .where(:checksum.exists => true)
                   .limit(5)
-                  .only(:url, :title, :tag_ids)
+                  .only(:url, :title, :tag_ids, :gif)
                   .order_by(:_id, Mongo::DESCENDING)
   end
 end
