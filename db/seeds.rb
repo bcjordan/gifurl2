@@ -25,4 +25,5 @@ end
 
 d = Gif.create
 d.remote_gif_url = "http://i.imgur.com/nAPxa.gif"
+d.title = "Book slap"
 d.save!

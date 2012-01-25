@@ -1,8 +1,11 @@
-- show_mini = false
+- show_mini = true
 
 .row
   .span1 &nbsp;
   .span8
+    - if @gifs
+      Got a gif.
+      = @gifs
     %center
       %h1
         %form
@@ -43,14 +46,11 @@
   .span5.sidebar
     %h2 newest gifs
     %ul.biglist
-      - @newfive.each do |gif|
+      - @new5.each do |gif|
         %li
-          %a.popovers{href: gif.gif.url, html: 'true',
-             title: "<div class='tagtitle'>#{gif.title}: </div>#{gif.tag_ids.inject(''){|s, tag| s+= '<div class="label labeltag success">'; s+= tag; s+= '</div>'}}",
-             'data-content' => "<img src='#{gif.gif.box}'/>",
-             'data-placement' => 'left'}
+          %a.popovers{popover_for(gif, :left)}
             - if show_mini
-              <img src="http://i.gifurl.com/H1EXl.gif_s.gif" width=25 height=25/>
+              <img src='#{gif.gif.thumb}' width=25 height=25/>
             = gif.title
     %h2 top all-time
     %ul.biglist

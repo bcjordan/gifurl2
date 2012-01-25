@@ -13,6 +13,15 @@ Newgifurl::Application.routes.draw do
 
   match '/auth/failure' => 'sessions#failure'
 
+  match '/*url' => 'home#new', :constraints => {:url => /http(s?)\:/} # Add gif by URL
+
+  match ':tag.gif' => 'home#jump'
+
+  match ':tag.:offset.gif' => 'home#jump'
+
+  match '/:tag' => 'home#tag'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

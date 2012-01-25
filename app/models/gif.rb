@@ -15,9 +15,6 @@ class Gif
   # TODO: cache uploaded file size, dimensions, content type
   # https://github.com/jnicklas/carrierwave/wiki/How-to%3A-Store-the-uploaded-file-size-and-content-type
 
-  # TODO: use multiple cloudfront cnames for thumbnails and other on-page-load assets
-  # https://github.com/jnicklas/carrierwave/issues/371#issuecomment-2854316
-  
   field :views, default: 0
   field :upvotes, default: 0
   field :downvotes, default: 0

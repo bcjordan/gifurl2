@@ -1,4 +1,4 @@
-$(function () { $('a.popovers') .popover({ offset: 10, html: true })})
+$(function () { $('a.popovers') .popover({ offset: 5, html: true, delayOut: 300 })})
 // popover can use option delayOut: 3000 => wait 3 seconds to hide again
 
 
